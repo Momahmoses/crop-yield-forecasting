@@ -1,85 +1,68 @@
 # Agricultural Crop Yield Forecasting & Farmland Monitoring
 
-A satellite-imagery and ML-powered yield prediction platform for smallholder farmers across North-Central Nigeria. Integrates NDVI time-series, weather data, soil properties, and farm management practices to forecast crop yields per hectare per growing season.
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-deployed-red.svg)](https://streamlit.io)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+Satellite-imagery and ML-powered yield prediction platform for smallholder farmers across North-Central Nigeria — integrating NDVI time-series, weather, soil properties, and farm management data to forecast crop yields per hectare per growing season.
+
+---
+
+## Problem Statement
+
+Smallholder farmers in Nigeria's food belt lack access to yield forecasts, making it impossible to plan inputs, storage, or marketing. This platform provides per-farm, per-season yield forecasts to improve food security and income planning.
 
 ---
 
 ## Features
 
-- **Multi-crop support** — Maize, Sorghum, Millet, Cassava, Yam, Rice, Groundnut
-- **Leave-one-season-out validation** — robust temporal generalization testing
-- **Interactive Streamlit dashboard** — Yield Map, Season Trends, Custom Forecasting
-- **Feature importance analysis** — understand which factors drive yield most
+| Feature | Description |
+|---------|-------------|
+| Multi-Crop Support | Maize, Sorghum, Millet, Cassava, Yam, Rice, Groundnut |
+| NDVI / EVI Integration | Sentinel-2 and Landsat-8 spectral indices |
+| LightGBM Regression | Yield prediction with feature importance ranking |
+| Leave-One-Season-Out CV | Robust temporal generalisation testing |
+| Streamlit Dashboard | Yield map, season trends, custom forecasting tool |
 
 ---
 
 ## Input Features
 
-| Feature | Description |
-|---|---|
-| `ndvi_mean` | Mean NDVI from satellite imagery (Sentinel-2 / Landsat) |
-| `ndvi_max` | Peak growing-season NDVI |
-| `rainfall_mm` | Total growing-season rainfall (mm) |
-| `temp_mean_c` / `temp_max_c` | Mean and maximum temperatures (°C) |
-| `humidity_pct` | Relative humidity (%) |
-| `growing_days` | Number of active growing days |
-| `fertilizer_kg` | Fertilizer applied (kg/ha) |
-| `soil_ph` | Soil acidity/alkalinity |
-| `soil_nitrogen` | Soil nitrogen concentration (mg/kg) |
-| `irrigation` | Binary: irrigated farm (1) or rainfed (0) |
-| `farm_size_ha` | Farm plot area (hectares) |
+| Feature | Source |
+|---------|--------|
+| `ndvi_mean` | Sentinel-2 / Landsat-8 |
+| `rainfall_mm` | NIMET rainfall stations |
+| `soil_quality` | FAO HarvestChoice soil data |
+| `temperature_mean` | ERA5 reanalysis |
+| `farm_management` | Extension officer surveys |
+| `crop_type` | Satellite classification |
 
 ---
 
-## Project Structure
+## Tech Stack
 
-```
-crop-yield-forecasting/
-├── src/
-│   ├── data_generator.py    # Synthetic multi-season farm dataset
-│   └── model.py             # Random Forest regressor with LOO-CV
-├── data/raw/                # Generated data (git-ignored)
-├── assets/                  # Saved model + encoder (git-ignored)
-├── streamlit_app.py         # Main Streamlit dashboard
-├── requirements.txt
-└── README.md
-```
+| Layer | Technology |
+|-------|-----------|
+| Remote Sensing | NDVI/EVI from Sentinel-2, Landsat-8 |
+| Machine Learning | LightGBM, scikit-learn |
+| Geospatial | GeoPandas, Folium |
+| Dashboard | Streamlit, Plotly |
+| Data | pandas, NumPy |
 
 ---
 
-## Setup & Run
+## Quick Start
 
 ```bash
 git clone https://github.com/Momahmoses/crop-yield-forecasting.git
 cd crop-yield-forecasting
-python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
 ---
 
-## Model Architecture
-
-- **Algorithm**: `RandomForestRegressor` (scikit-learn)
-- **Hyperparameters**: 300 estimators, max depth 12, 70% feature subsampling
-- **Validation**: Leave-one-season-out cross-validation
-- **Target**: Yield in kg per hectare
-
----
-
-## Target States
-
-Kaduna · Kano · Niger · Benue · Plateau · Kebbi · Sokoto · Zamfara
-
----
-
-## Tech Stack
-
-`Python` · `scikit-learn` · `Streamlit` · `Plotly` · `Pandas` · `NumPy`
-
----
-
 ## Author
 
-**Momah Moses** — [github.com/Momahmoses](https://github.com/Momahmoses)
+**Momah Moses** — Geospatial AI Engineer & Data Scientist
+[GitHub](https://github.com/Momahmoses) · [Portfolio](https://momahmoses-ng-gis-portfolio.hf.space)
