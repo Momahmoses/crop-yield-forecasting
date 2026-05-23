@@ -4,7 +4,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-deployed-red.svg)](https://streamlit.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Satellite-imagery and ML-powered yield prediction platform for smallholder farmers across North-Central Nigeria — integrating NDVI time-series, weather, soil properties, and farm management data to forecast crop yields per hectare per growing season.
+Satellite-imagery and ML-powered yield prediction platform for smallholder farmers across North-Central Nigeria, integrating NDVI time-series, weather, soil properties, and farm management data to forecast crop yields per hectare per growing season.
 
 ---
 
@@ -64,5 +64,5 @@ streamlit run streamlit_app.py
 
 ## Author
 
-**Momah Moses** — Geospatial AI Engineer & Data Scientist
+**Momah Moses**, Geospatial AI Engineer & Data Scientist
 [GitHub](https://github.com/Momahmoses) · [Portfolio](https://momahmoses-ng-gis-portfolio.hf.space)
